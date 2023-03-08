@@ -17,10 +17,10 @@ yarn dev
 # Screenshots
 
 <div class = "container"> 
-<img src="https://i.imgur.com/NySLxUs.png" width="50%">
-<img src="https://i.imgur.com/ru7im1N.png"  width="50%">
-<img src="https://i.imgur.com/QqmQK2p.png"  width="50%">
-<img src="https://i.imgur.com/xC9k1kB.png"  width="50%">
-<img src="https://i.imgur.com/LW8LFxx.png"  width="50%">
-<img src="https://i.imgur.com/z9mhDNQ.png"  width="50%">
+<img src="https://i.imgur.com/NySLxUs.png" width="45%">
+<img src="https://i.imgur.com/ru7im1N.png"  width="45%">
+<img src="https://i.imgur.com/QqmQK2p.png"  width="45%">
+<img src="https://i.imgur.com/xC9k1kB.png"  width="45%">
+<img src="https://i.imgur.com/LW8LFxx.png"  width="45%">
+<img src="https://i.imgur.com/z9mhDNQ.png"  width="45%">
 </div>
