@@ -16,18 +16,6 @@ yarn dev
 
 # Screenshots
 
-<style>
-.container{
-  display:flex;
-  width: 100%; 
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-.container > img {
-  padding: 10px;
-}
-</style>
-
 <div class = "container"> 
 <img src="https://i.imgur.com/NySLxUs.png" width="50%">
 <img src="https://i.imgur.com/ru7im1N.png"  width="50%">
