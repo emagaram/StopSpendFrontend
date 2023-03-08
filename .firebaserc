@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "dev": "stopspenddev",
+    "prod": "stopspendprod"
+  },
+  "targets": {},
+  "etags": {}
+}

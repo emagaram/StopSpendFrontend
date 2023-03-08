@@ -1,0 +1,11 @@
+.PhoneInput input {
+  border: 0;
+  background-color: transparent;
+  outline: none;
+  width: 100%;
+}
+
+.PhoneInputFocused {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.25rem rgb(119 193 113 / 25%);
+}

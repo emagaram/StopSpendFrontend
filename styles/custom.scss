@@ -1,0 +1,530 @@
+// TODO, one of the messiest files in the project. Clean up organization and use BEM conventions 
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace +
+      str-replace(
+        str-slice($string, $index + str-length($search)),
+        $search,
+        $replace
+      );
+  }
+
+  @return $string;
+}
+
+//custom variables
+$off-white: #fafafa;
+$off-black: #050505;
+$form-control-color: red;
+//Bs variables
+$primary: #48853c;
+$custom-gray: #b8b8b8;
+$light-gray: #dedede;
+$font-family-sans-serif: Montserrat, system-ui, -apple-system, "Segoe UI",
+  Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+
+//import functions and variables
+@import "../node_modules/bootstrap/scss/_functions";
+@import "../node_modules/bootstrap/scss/_variables";
+@import "~bootstrap/scss/maps";
+@import "bootstrap/scss/utilities";
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "visibility": (
+      property: visibility,
+      responsive: true,
+      class: null,
+      values: (
+        visible: visible,
+        invisible: hidden,
+      ),
+    ),
+    "width": (
+      property: width,
+      responsive: true,
+      class: w,
+      values: (
+        25: 25%,
+        50: 50%,
+        75: 75%,
+        100: 100%,
+        auto: auto,
+      ),
+    ),
+  )
+);
+$theme-colors: (
+  "primary": $primary,
+  "danger": $danger,
+  "white": $off-white,
+);
+$custom-theme-colors: (
+  "custom-gray": $custom-gray,
+  "light-gray": $light-gray,
+);
+$theme-colors: map-merge($theme-colors, $custom-theme-colors);
+$box-shadow-sm: 0 0.125rem 0.125rem rgba($black, 0.15);
+
+//Bs overrides
+.btn-primary,
+.btn-outline-primary:hover,
+.btn-outline-primary:active,
+.navbar-text,
+.navbar-brand,
+#navigation .nav-link {
+  color: $off-white !important;
+}
+
+.clickable {
+  color: $primary;
+  //text-decoration: underline;
+  //font-weight: 600;
+  user-select: none;
+  cursor: pointer;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.underline-input,
+.underline-input:focus-visible {
+  border: 0;
+  outline: 0;
+  border-radius: 0;
+  border-bottom: 2px solid gainsboro;
+  font-weight: 600;
+  transition: border-color 0.15s linear;
+}
+.underline-input:focus-visible {
+  border-bottom: 2px solid $primary;
+}
+
+.disabled {
+  color: gray !important;
+}
+
+.primary {
+  color: $primary;
+}
+
+.color-primary {
+  color: $primary;
+}
+
+.bgc-primary-lighten {
+  background-color: lighten($primary, 45%);
+}
+
+.bgc-primary {
+  background-color: $primary !important;
+}
+
+.danger {
+  color: $danger !important;
+}
+
+.gray-primary {
+  color: brighten(primary, 20%);
+}
+
+.subtext-color {
+  color: #646464;
+}
+
+.add-button {
+  color: $primary;
+  //text-decoration: underline;
+  //font-weight:600;
+  cursor: pointer;
+  user-select: none;
+}
+
+.hover-bg:hover {
+  //background: #f5f5f5;
+  cursor: pointer;
+  .hover-bg-highlight,
+  &.hover-bg-highlight {
+    filter: brightness(135%);
+  }
+}
+.background {
+  background: linear-gradient(
+    to bottom,
+    $primary 0,
+    $primary 23.5em,
+    #eeeeee 23.5em,
+    #eeeeee 100%
+  );
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* z-index usage is up to you.. although there is no need of using it because the default stack context will work. */
+  z-index: -1; // this is optional
+}
+#navigation {
+  background: $primary;
+  top: 0;
+  position: fixed;
+  .nav-link.active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  .nav-link:hover:not(.active) {
+    color: #cdcdcd !important;
+  }
+}
+
+#navigation-mobile {
+  background: $primary;
+  border-top: 1px solid gainsboro;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  box-sizing: border-box;
+  .nav-link.active {
+    font-weight: bold;
+  }
+}
+
+#navigation-mobile-top {
+  background: white;
+  border-bottom: 2px solid gainsboro;
+  position: absolute;
+  z-index: 5;
+  top: 0px;
+  width: 100%;
+  left: 0px;
+
+  box-sizing: border-box;
+  .nav-link.active {
+    font-weight: bold;
+  }
+}
+
+.custom-checkbox:checked {
+  background-color: white !important;
+  background-image: url("../public/greenCheck.png") !important;
+}
+
+/* import bootstrap to ;set changes */
+@import "../node_modules/bootstrap/scss/bootstrap";
+// .btn-ezra {
+//     @extend .btn;
+//     background-color: red;
+//     color: #ffffff;
+// }
+
+// .btn-white, btn-white:focus, btn-white:active, .btn-white:hover {
+//   color: $primary;
+// }
+
+.search-box {
+  background: hsla(0, 0%, 100%, 0.25);
+  border: 1px solid transparent;
+
+  &::placeholder {
+    color: white;
+  }
+  &:focus {
+    &::placeholder {
+      color: black;
+    }
+    background: white;
+    box-shadow: 0 0 0 0.25rem rgb(255 255 255 / 20%);
+  }
+}
+
+.recent-activity {
+  tr:nth-last-child(-n + 1) {
+    td {
+      border-bottom: 0px !important;
+    }
+  }
+}
+.recent-activity-db {
+  tr:nth-last-child(-n + 1) {
+    td {
+      border-bottom: 0px !important;
+    }
+  }
+}
+.fw-bold {
+  font-weight: 600 !important;
+}
+.raise-feedback {
+  bottom: 100px !important;
+}
+@include media-breakpoint-up(sm) {
+  .curve-primary::before {
+    top: -200px !important;
+  }
+  .setup-media {
+    max-width: 800px !important;
+  }
+}
+@include media-breakpoint-up(md) {
+  .container-p {
+    max-width: 580px;
+  }
+  .slantBg {
+    z-index: 2 !important;
+    margin-top: -138px !important;
+  }
+  .slantBg::before {
+    margin-top: 1px !important;
+  }
+  .curve-primary::before {
+    top: 0px !important;
+    clip-path: none !important;
+  }
+  .shifted-text-setup {
+    all: unset !important;
+  }
+}
+@include media-breakpoint-up(lg) {
+  .container-p {
+    max-width: 1150px;
+  }
+  .slantBg::before {
+    margin-top: 1px !important;
+  }
+  .curve-primary::before {
+    top: -10px !important;
+    clip-path: ellipse(250% 100% at -15% 0%) !important;
+  }
+  .landing-img {
+    margin-bottom: -160px;
+  }
+  .below-navbar-landing {
+    padding-top: 6.875em !important;
+  }
+  .below-navbar-app {
+    padding-top: 6.875em !important;
+  }
+  .setup-media {
+    max-width: 1100px !important;
+  }
+  .ss-card {
+    border: 1px solid #d3d3d3;
+  }
+  .my-account {
+    margin-bottom: 0.625em;
+  }
+  .raise-feedback {
+    bottom: 15px !important;
+  }
+}
+.btn-back {
+  @extend .btn-close;
+  background-image: url("../public/back.svg") !important;
+  background-size: 1.25em;
+  margin: 0 0 0 -0.73rem !important;
+}
+
+.btn-white {
+  color: $primary;
+  &:focus,
+  &:hover {
+    color: $primary;
+  }
+}
+
+.nav-pills-recent-activity {
+  @extend .nav-pills;
+
+  .nav-link {
+    color: darkgray;
+    text-align: center;
+    border: 1px solid darkgray;
+  }
+
+  .nav-link.active,
+  .show > .nav-link {
+    border: 1px solid $primary;
+    color: $white;
+    background: $primary;
+  }
+}
+
+.slantBg::before {
+  content: " ";
+  height: auto;
+  width: 100%;
+  max-height: none;
+  background-image: none;
+  background: white;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  clip-path: polygon(100% 100%, 0 100%, 0 19vw, 100% 0);
+  margin-top: -240px;
+}
+
+.curve-primary::before {
+  background-color: $primary;
+}
+
+.curve-white::before {
+  background-color: white;
+}
+
+.curve-primary,
+.curve-white {
+  position: relative;
+}
+
+.curve-primary::before,
+.curve-white::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -160px;
+  width: 100%;
+  height: 100%;
+  clip-path: ellipse(250% 100% at 40% 0%);
+}
+
+.insert-caps::before,
+.insert-caps::after {
+  content: "";
+  background: #dbeada;
+  position: absolute;
+  box-sizing: border-box;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  border-radius: 50%;
+  z-index: -1;
+  margin-top: -36px;
+}
+
+.shifted-text-setup {
+  width: calc(100% + 45px);
+  margin-left: -45px;
+}
+
+.expand-container {
+  overflow: hidden;
+}
+
+.expand-contract {
+  //border-bottom: 1px solid red;
+  margin-top: -100%;
+  transition: all 0.4s;
+}
+
+.expand-contract.expanded {
+  //background-color: green;
+  margin-top: 0;
+}
+
+.ss-card {
+  @extend .p-3, .p-lg-4;
+  border-radius: 5px;
+  // padding: 1.25em;
+}
+.ss-card-label {
+  @extend .mb-0, .mb-lg-3;
+  color: #050505;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.ss-subcard-title {
+  font-size: 1.375rem;
+  font-weight: 500;
+}
+.ss-subcard-subtitle {
+  color: gray;
+  font-size: 0.875rem;
+}
+.welcome-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  // border-radius: 12px;
+}
+
+.welcome-modal {
+  .modal-content {
+    border-color: transparent;
+    border-radius: 15px;
+    overflow: hidden;
+    background: transparent;
+  }
+}
+.rounded-button {
+  border-radius: 55px;
+}
+
+.user-info-circles {
+  .current {
+    background: $primary !important;
+  }
+  .progress-circle-indexed-step {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+.my-account {
+  margin-bottom: 9.375em;
+}
+.below-navbar-landing {
+  padding-top: 6.875rem;
+}
+
+.below-navbar-app {
+  padding-top: 3.125em;
+}
+
+.container-center-below-navbar {
+  @extend .below-navbar-landing, .d-lg-flex, .align-items-lg-center;
+  height: 100vh;
+}
+
+.link {
+  text-decoration: underline;
+  color: $primary;
+}
+
+// .radio-mac {
+//   -webkit-logical-width: auto;
+// }
+// .firebase-emulator-warning {
+//   display: none;
+// }
+
+.loading:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  -webkit-animation: ellipsis steps(4, end) 900ms infinite;
+  animation: ellipsis steps(4, end) 900ms infinite;
+  content: "\2026";
+  /* ascii code for the ellipsis character */
+  width: 0px;
+}
+
+@keyframes ellipsis {
+  to {
+    width: 40px;
+  }
+}
+
+@-webkit-keyframes ellipsis {
+  to {
+    width: 40px;
+  }
+}

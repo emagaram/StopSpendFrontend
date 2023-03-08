@@ -1,0 +1,46 @@
+{
+  "name": "shared",
+  "version": "1.0.0",
+  "description": "",
+  "private": "true",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc index.ts -d",
+    "precommit": "lint-staged",
+    "lint": "./node_modules/.bin/eslint --max-warnings=0 ."
+  },
+  "lint-staged": {
+    "*.{jsx,ts,tsx,css,scss}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@firebase/firestore": "^3.4.12",
+    "firebase-admin": "^11.0.1",
+    "i": "^0.3.7",
+    "lodash": "^4.17.21",
+    "npm": "^8.13.0",
+    "plaid": "^10.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.29",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "eslint": "^8.20.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.3.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.30.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
+  }
+}

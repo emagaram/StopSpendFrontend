@@ -1,0 +1,38 @@
+$primary: #48853c;
+.progress-circles-container {
+  height: 10px;
+  line-height: 1;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 0;
+
+  .progress-circle-step {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+    position: absolute;
+    transform: translateX(-50%);
+  }
+
+  .progress-circle-indexed-step {
+    color: white;
+    width: 16px;
+    height: 16px;
+    font-size: 12px;
+    background-color: rgb(203, 203, 203);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: width 0.5s, height 0.5s;
+  }
+  .current {
+    background-color: white;
+    // width: 20px;
+    // height: 20px;
+  }
+}
