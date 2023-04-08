@@ -3432,10 +3432,10 @@ pidtree@^0.6.0:
   resolved "https://registry.npmjs.org/pidtree/-/pidtree-0.6.0.tgz"
   integrity sha512-eG2dWTVw5bzqGRztnHExczNxt5VGsE6OwTeCG3fdUf9KBsZzO3R5OIIIzWR+iZA0NtZ+RDVdaoE2dK1cn6jH4g==
 
-plaid@^10.3.0:
-  version "10.6.0"
-  resolved "https://registry.npmjs.org/plaid/-/plaid-10.6.0.tgz"
-  integrity sha512-rVGAxQBcxIu8W7GETwsHO/QNDude+Jy74N/9aPleq5Z3qigyesYlgXdzCSydkF9+lCNDeZ8EeYGDENW0+bOHYw==
+plaid@^10.9.0:
+  version "10.9.0"
+  resolved "https://registry.yarnpkg.com/plaid/-/plaid-10.9.0.tgz#47a9b996c280378ac85778a063288cf459c68e29"
+  integrity sha512-Dhe4+krfCpDem3jhEqWQLkqiKcOOOkaox2nW1nZtZimsyfyrJ0QPQQWAUdo8IJet4izpR/ecqW+eGLlLdfdl+Q==
   dependencies:
     axios "0.21.4"
 
